@@ -1,26 +1,71 @@
 package de.medieninformatik.prog3;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 
-public class PaintArea extends Canvas {
+public class PaintArea extends Canvas implements MouseListener {
+    int x; //x coordinate
+    int y; //y coordinate
+    int clickCount = 0; //counter for mouseclick
+    int width = 400;
+    int height = 300;
 
-
-    // Pac ist im Grunde der Mauscontroller
-    public PaintArea(PaintAreaController pac)  {
-        setSize(400, 300);
-        addMouseListener(pac);
+    public PaintArea()  {
+        setSize(width, height);
+        addMouseListener(this);
     }
 
-    //Canvas klicken, > Code > Implement Methods > auswählen
+    /**
+     * Method that prints a Circle on given coordinates
+     * clears the circles after the third call
+     * @param g Graphics
+     */
     @Override
     public void paint(Graphics g) {
         Ellipse2D ellipse2D;
         ellipse2D = new Ellipse2D.Float(
-                10.0F, 10.0F,// Koordinaten
-                5.0F, 5.0F); // Größen
+                x, y,// Koordinaten
+                20.0F, 20.0F); // Größen
         Graphics2D gd2 = (Graphics2D)g;
         gd2.draw(ellipse2D);
+        clickCount++;
+        if (clickCount == 3){
+            clickCount = 0;
+            gd2.clearRect(x,y,width,height);
+        }
+    }
+
+    /**
+     * Method that saves the coordinates of a Mouse click and calls the paint-Method through the repaint-Method
+     * @param e MouseEvent
+     */
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        x = e.getX();
+        y = e.getY();
+        this.repaint();
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
 

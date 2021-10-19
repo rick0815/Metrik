@@ -3,11 +3,10 @@ package de.medieninformatik.prog3;
 import java.awt.*;
 
 public class MainFrame extends Frame {
-    private static PaintAreaController pac = new PaintAreaController();
-    private static PaintArea pa = new PaintArea(pac);
+    private static PaintArea pa = new PaintArea();
 
     public MainFrame(MainFrameController mfc)  {
-        setTitle("Metrik");
+        setTitle("Metrik Version 1.0");
         setSize(400, 300);
 
         initializeMenu();
