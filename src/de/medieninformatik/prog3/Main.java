@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        //Mainframe ist Hauptfenster, controller ist der Listener dafür
+        //Mainframe is window
         MainFrameController mfc = new MainFrameController();
         MainFrame mainFrame = new MainFrame(mfc);
 

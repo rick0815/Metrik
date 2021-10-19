@@ -8,8 +8,10 @@ import java.awt.geom.Ellipse2D;
 
 public class PaintArea extends Canvas implements MouseListener {
 
-    static int x; //x coordinate
-    static int y; //y coordinate
+    int current_x, current_y;
+    int new_x, new_y;
+    //static int x; //x coordinate
+    //static int y; //y coordinate
     int clickCount = 0; //counter for mouseclick
     int width = 400;
     int height = 300;
@@ -29,15 +31,18 @@ public class PaintArea extends Canvas implements MouseListener {
     public void paint(Graphics g) {
         Ellipse2D ellipse2D;
         ellipse2D = new Ellipse2D.Float(
-                x, y,// Koordinaten
-                20.0F, 20.0F); // Größen
+                new_x, new_y,// coordinates
+                20.0F, 20.0F); // size
         Graphics2D gd2 = (Graphics2D)g;
         gd2.draw(ellipse2D);
+        gd2.drawString((new_x + "  " + new_y), new_x, new_y);
         clickCount++;
         if (clickCount == 3){
             clickCount = 0;
-            gd2.clearRect(x,y,width,height);
         }
+
+        current_x = new_x;
+        current_y = new_y;
     }
 
     /**
@@ -47,12 +52,12 @@ public class PaintArea extends Canvas implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        x = e.getX();
-        y = e.getY();
-        this.repaint(); //ruft die PaintMethode auf
+        new_x = e.getX();
+        new_y = e.getY();
+        this.repaint(); //paint method
 
-        System.out.println(x);
-        System.out.println(y);
+        //System.out.println(x);
+        //System.out.println(y);
 
     }
 
@@ -78,5 +83,3 @@ public class PaintArea extends Canvas implements MouseListener {
 
     }
 }
-
-//kreis um die Hälfte der Koordinaten verschieben, damit in der Mitte gezeichnet

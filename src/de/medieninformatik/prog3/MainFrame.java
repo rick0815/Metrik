@@ -21,8 +21,10 @@ public class MainFrame extends Frame {
 
         //Displays Text in bottom left window corner. Should change with each click, but doesn't.
         //Problem is, that the coordinates need to be static, but cannot be while in the MouseClickEvent
+        /*
         coordinates = new Label("Location: " + PaintArea.x + " / " + PaintArea.y);
         add(BorderLayout.SOUTH, coordinates);
+         */
 
     }
 
@@ -35,7 +37,7 @@ public class MainFrame extends Frame {
         mFile.add(new MenuItem("Neues Programm"));
         mFile.add(new MenuItem("Beenden"));
 
-        //diese Zufügen
+        //add menu
         mbar.add(mFile);
         setMenuBar(mbar);
     }
