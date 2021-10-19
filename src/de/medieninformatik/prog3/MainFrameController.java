@@ -11,7 +11,6 @@ public class MainFrameController implements WindowListener {
 
     }
 
-    //Schließfunktion
     @Override
     public void windowClosing(WindowEvent event) {
         event.getWindow().dispose();

@@ -32,6 +32,7 @@ public class PaintArea extends Canvas implements MouseListener {
         Graphics2D gd2 = (Graphics2D)g;
         if(new_x > 0) {
             gd2.draw(ellipse2D);
+            gd2.drawString((new_x + "  " + new_y), new_x, new_y);
             clickCount++;
             System.out.println("newx " + new_x + " newy " + new_y + " currx " + current_x + " curry " + current_y);
             if (clickCount == 3) {
@@ -49,7 +50,6 @@ public class PaintArea extends Canvas implements MouseListener {
             }
         }
     }
-
 
     /**
      * Method that saves the coordinates of a Mouse click and calls the paint-Method through the repaint-Method
@@ -84,5 +84,3 @@ public class PaintArea extends Canvas implements MouseListener {
 
     }
 }
-
-//kreis um die Hälfte der Koordinaten verschieben, damit in der Mitte gezeichnet
