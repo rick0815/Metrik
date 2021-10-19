@@ -6,14 +6,15 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 
 public class PaintArea extends Canvas implements MouseListener {
-    int x; //x coordinate
-    int y; //y coordinate
+    int current_x=0, current_y=0;
+    int new_x, new_y;
     int clickCount = 0; //counter for mouseclick
-    int width = 400;
-    int height = 300;
+    float width = 20.0F;
+    float height = 20.0F;
+
 
     public PaintArea()  {
-        setSize(width, height);
+        setSize(400, 300);
         addMouseListener(this);
     }
 
@@ -26,16 +27,29 @@ public class PaintArea extends Canvas implements MouseListener {
     public void paint(Graphics g) {
         Ellipse2D ellipse2D;
         ellipse2D = new Ellipse2D.Float(
-                x, y,// Koordinaten
+                new_x-10.0F, new_y-10.0F,// Koordinaten
                 20.0F, 20.0F); // Größen
         Graphics2D gd2 = (Graphics2D)g;
-        gd2.draw(ellipse2D);
-        clickCount++;
-        if (clickCount == 3){
-            clickCount = 0;
-            gd2.clearRect(x,y,width,height);
+        if(new_x > 0) {
+            gd2.draw(ellipse2D);
+            clickCount++;
+            System.out.println("newx " + new_x + " newy " + new_y + " currx " + current_x + " curry " + current_y);
+            if (clickCount == 3) {
+                clickCount = 0;
+                PaintArea.this.repaint();
+                gd2.clearRect(new_x - 10, new_y - 10, 40, 40);
+                gd2.clearRect(current_x - 10, current_y - 10, 40, 40);
+                current_y = 0;
+                current_x = 0;
+                new_y = 0;
+                new_x = 0;
+            } else {
+                current_x = new_x;
+                current_y = new_y;
+            }
         }
     }
+
 
     /**
      * Method that saves the coordinates of a Mouse click and calls the paint-Method through the repaint-Method
@@ -43,9 +57,11 @@ public class PaintArea extends Canvas implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        x = e.getX();
-        y = e.getY();
-        this.repaint();
+        new_x = e.getX();
+        new_y = e.getY();
+        Graphics g = this.getGraphics(); // Graphics from Canvas
+        paint(g); // Paint-Method with g
+        //this.repaint();
     }
 
     @Override
