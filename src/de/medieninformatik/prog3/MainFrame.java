@@ -4,9 +4,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Creates the Window, sets its title and creates the Menubar
+ */
 public class MainFrame extends Frame {
-
-    private Label coordinates;
 
     private static PaintArea pa = new PaintArea();
 
@@ -19,17 +20,11 @@ public class MainFrame extends Frame {
         addWindowListener(mfc);
 
         add(pa);
-
-
-        //Displays Text in bottom left window corner. Should change with each click, but doesn't.
-        //Problem is, that the coordinates need to be static, but cannot be while in the MouseClickEvent
-        /*
-        coordinates = new Label("Location: " + PaintArea.x + " / " + PaintArea.y);
-        add(BorderLayout.SOUTH, coordinates);
-         */
-
     }
 
+    /**
+     * creates Menubar and adds MenuItems
+     */
     private void initializeMenu() {
 
         MenuBar mbar = new MenuBar();

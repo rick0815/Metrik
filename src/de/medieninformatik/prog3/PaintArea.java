@@ -7,6 +7,9 @@ import java.awt.geom.Ellipse2D;
 
 import static java.lang.String.valueOf;
 
+/**
+ * Containing all Methods for the displaying circles, lines and calculating and displaying coordinates
+ */
 public class PaintArea extends Canvas implements MouseListener {
     int current_x=0, current_y=0;
     int new_x, new_y;
