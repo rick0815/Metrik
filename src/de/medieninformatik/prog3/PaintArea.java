@@ -32,6 +32,9 @@ public class PaintArea extends Canvas implements MouseListener {
         Graphics2D gd2 = (Graphics2D)g;
         if(new_x > 0) {
             gd2.draw(ellipse2D);
+            if(current_x > 0){
+                gd2.drawLine(new_x,new_y, current_x,current_y); // draws line between the coordinates
+            }
             gd2.drawString((new_x + "  " + new_y), new_x, new_y);
             clickCount++;
             System.out.println("newx " + new_x + " newy " + new_y + " currx " + current_x + " curry " + current_y);
