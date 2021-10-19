@@ -11,7 +11,7 @@ public class MainFrame extends Frame {
     private static PaintArea pa = new PaintArea();
 
     public MainFrame(MainFrameController mfc)  {
-        setTitle("Metrik Variante 1.1.0");
+        setTitle("Metrik Version 1.2");
         setSize(400, 300);
 
         initializeMenu();
@@ -53,9 +53,15 @@ public class MainFrame extends Frame {
         menu.add(gelb);
         gelb.addActionListener(e -> pa.setBackground(Color.yellow)); //action occours when clicking on red
 
+        Menu menu2 = new Menu("Radius");
+
+        //Dialog dialog = new Dialog();
+        //menu2.add(dialog);
+
         //add menu
         mbar.add(mFile);
         mbar.add(menu);
+        mbar.add(menu2);
         setMenuBar(mbar);
     }
 }
