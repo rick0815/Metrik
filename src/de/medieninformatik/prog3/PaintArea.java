@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 public class PaintArea extends Canvas implements MouseListener {
     int x; //x coordinate
@@ -18,18 +19,18 @@ public class PaintArea extends Canvas implements MouseListener {
     }
 
     /**
-     * Method that prints a Circle on given coordinates
-     * clears the circles after the third call
+     * Method that prints a Rectangle on given coordinates
+     * clears the Rectangle after the third call
      * @param g Graphics
      */
     @Override
     public void paint(Graphics g) {
-        Ellipse2D ellipse2D;
-        ellipse2D = new Ellipse2D.Float(
+        Rectangle2D rectangle2D;
+        rectangle2D = new Rectangle2D.Float(
                 x, y,// Koordinaten
                 20.0F, 20.0F); // Größen
         Graphics2D gd2 = (Graphics2D)g;
-        gd2.draw(ellipse2D);
+        gd2.draw(rectangle2D);
         clickCount++;
         if (clickCount == 3){
             clickCount = 0;
