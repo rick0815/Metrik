@@ -3,6 +3,9 @@ package de.medieninformatik.prog3;
 import java.awt.*;
 
 public class MainFrame extends Frame {
+
+    private Label coordinates;
+
     private static PaintArea pa = new PaintArea();
 
     public MainFrame(MainFrameController mfc)  {
@@ -12,7 +15,13 @@ public class MainFrame extends Frame {
         initializeMenu();
 
         addWindowListener(mfc);
+
         add(pa);
+
+
+        coordinates = new Label("Location: " + PaintArea.x + " / " + PaintArea.y);
+        add(BorderLayout.SOUTH, coordinates);
+
     }
 
     private void initializeMenu() {

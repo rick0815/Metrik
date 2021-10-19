@@ -19,5 +19,6 @@ public class Main {
         MainFrame mainFrame = new MainFrame(mfc);
 
         mainFrame.setVisible(true);
+
     }
 }

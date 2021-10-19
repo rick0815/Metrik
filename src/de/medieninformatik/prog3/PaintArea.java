@@ -1,13 +1,15 @@
 package de.medieninformatik.prog3;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 
 public class PaintArea extends Canvas implements MouseListener {
-    int x; //x coordinate
-    int y; //y coordinate
+
+    static int x; //x coordinate
+    static int y; //y coordinate
     int clickCount = 0; //counter for mouseclick
     int width = 400;
     int height = 300;
@@ -15,6 +17,7 @@ public class PaintArea extends Canvas implements MouseListener {
     public PaintArea()  {
         setSize(width, height);
         addMouseListener(this);
+
     }
 
     /**
@@ -43,10 +46,17 @@ public class PaintArea extends Canvas implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
+
         x = e.getX();
         y = e.getY();
-        this.repaint();
+        this.repaint(); //ruft die PaintMethode auf
+
+        System.out.println(x);
+        System.out.println(y);
+
     }
+
+
 
     @Override
     public void mousePressed(MouseEvent e) {
