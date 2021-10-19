@@ -11,7 +11,7 @@ public class MainFrame extends Frame {
     private static PaintArea pa = new PaintArea();
 
     public MainFrame(MainFrameController mfc)  {
-        setTitle("Metrik Version 1.2");
+        setTitle("Metrik Version 1.2.1");
         setSize(400, 300);
 
         initializeMenu();
