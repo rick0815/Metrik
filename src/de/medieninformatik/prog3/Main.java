@@ -12,6 +12,12 @@ package de.medieninformatik.prog3;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+
+
+        //Mainframe ist Hauptfenster, controller ist der Listener dafür
+        MainFrameController mfc = new MainFrameController();
+        MainFrame mainFrame = new MainFrame(mfc);
+
+        mainFrame.setVisible(true);
     }
 }
