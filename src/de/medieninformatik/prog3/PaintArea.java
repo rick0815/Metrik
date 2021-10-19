@@ -1,6 +1,7 @@
 package de.medieninformatik.prog3;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 public class PaintArea extends Canvas {
 
@@ -14,7 +15,12 @@ public class PaintArea extends Canvas {
     //Canvas klicken, > Code > Implement Methods > auswählen
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
+        Ellipse2D ellipse2D;
+        ellipse2D = new Ellipse2D.Float(
+                10.0F, 10.0F,// Koordinaten
+                5.0F, 5.0F); // Größen
+        Graphics2D gd2 = (Graphics2D)g;
+        gd2.draw(ellipse2D);
     }
 }
 
